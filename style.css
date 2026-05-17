@@ -1,0 +1,371 @@
+/* --- GLOBAL RESETS & FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Permanent+Marker&family=Rubik+Mono+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styles & dynamic background tinting */
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #f8fafc;
+   font-family: myFont;
+  src: url(sansation_light.woff);
+  font-size: 1.4rem; /* Makes cursive text easy to read */
+  min-height: 100vh;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+}
+
+/* Light Mode Toggle State */
+body.light {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2070&auto=format&fit=crop');
+  color: #0f172a;
+}
+
+/* --- NAVBAR & LOUD HEADINGS --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+/* Big, bold, arcade-like title font */
+nav h1 {
+   font-family: myFont;
+  src: url(sansation_light.woff);
+  font-weight: 900;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+  color: #ffffff;
+  
+}
+
+body.light nav h1 {
+  color: #000000;
+
+}
+
+/* Handwritten section headers */
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  transform: rotate(0%);
+}
+
+body.light h2 {
+  color: black;
+}
+
+/* --- YOUTUBE SHORTS STYLE TOGGLE BUTTON --- */
+.shorts-action-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: background 0.3s, transform 0.2s, border-color 0.3s;
+}
+
+.shorts-action-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #00f0ff;
+}
+
+.shorts-action-btn:active {
+  transform: scale(0.93);
+}
+
+.icon-layer {
+  position: absolute;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+}
+
+.dark-icon {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+.light-icon {
+  opacity: 0;
+  transform: translateY(35px) rotate(90deg);
+}
+
+/* Shorts Button Light Mode Mechanics */
+body.light .shorts-action-btn {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.2);
+  box-shadow: 0 6px 15px rgba(15, 23, 42, 0.15);
+}
+
+body.light .shorts-action-btn:hover {
+  background: rgba(15, 23, 42, 0.15);
+  border-color: #ff007f;
+}
+
+body.light .dark-icon {
+  opacity: 0;
+  transform: translateY(-35px) rotate(-90deg);
+}
+
+body.light .light-icon {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+/* --- THE MAIN LAYOUT HOUSES --- */
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 0 40px 40px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* High Contrast Glass Panels */
+.form-card, .report-card {
+  flex: 1;
+  min-width: 340px;
+  padding: 35px;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1), background 0.5s ease;
+}
+
+.form-card:hover, .report-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 238, 255, 0.212);
+}
+
+body.light .form-card, 
+body.light .report-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+}
+
+.input-row {
+  display: flex;
+  gap: 15px;
+}
+
+/* --- PLAYFUL FLOATING INPUT PANELS --- */
+.input-group {
+  position: relative;
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  color: inherit;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+body.light .input-group input {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(15, 23, 42, 0.15);
+}
+
+.input-group label {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  pointer-events: none;
+  font-size: 1.0rem;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0.7;
+}
+
+/* Hand-drawn pop out effect for labels when focused */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+  top: -12px;
+  left: 12px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  padding: 2px 10px;
+  background: #ff007f;
+  color: white;
+  border-radius: 6px;
+  opacity: 1;
+  transform: rotate(-3deg);
+  box-shadow: 2px 2px 0px #000;
+}
+
+.input-group input:focus {
+  border-color: #00f0ff;
+  box-shadow: 0 0 10px rgb(0, 238, 255);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* --- DYNAMIC SLIDERS & PROGRESS SYSTEMS --- */
+.range-group {
+  margin: 25px 0;
+}
+
+.range-label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#confidenceValue {
+  background: #ffffff;
+  color: black;
+  padding: 1px 12px;
+  border-radius: 8px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  box-shadow: 2px 2px 0px #000;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #ff007f;
+  cursor: pointer;
+}
+
+/* The Heavy-Hitting Action Call Button */
+.action-btn {
+  width: 100%;
+  padding: 18px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, #a14975, #81345a);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 0, 127, 0.4);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.action-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(255, 0, 127, 0.6);
+}
+
+.action-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Dynamic Outcome Badges */
+.result-header {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin: 15px 0;
+  text-shadow: 3px 3px 0px #000;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.progress-container {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  height: 20px;
+  width: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+  transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* Dialogue speech-bubble look for insights */
+.insight-box {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed #00f0ff;
+  border-radius: 16px;
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+
+body.light .insight-box {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: #7c3aed;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+/* Screen Shaking Telemetry Effect Hook */
+/* Apply this to your base class */
+.screen-rumble {
+  /* Smooths out position, size, and opacity changes */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.4s ease;
+  
+  /* Forces GPU acceleration for maximum fluidness */
+  will-change: transform; 
+}
+
+/* Example: Smoothly scales up and lifts when active/hovered */
+.screen-rumble:hover,
+.screen-rumble.active {
+  transform: translateY(-5px) scale(1.02);
+}
+
+
+@keyframes rumble {
+  0% { transform: translate(2px, 1px) rotate(0deg); }
+  25% { transform: translate(-2px, -1px) rotate(-1deg); }
+  50% { transform: translate(-1px, 2px) rotate(1deg); }
+  75% { transform: translate(1px, -2px) rotate(0deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}

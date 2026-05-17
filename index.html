@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup Survival Index</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav>
+    <h1 class="arcade-title">STARTUP SURVIVAL INDEX</h1>
+    
+    <button id="toggleTheme" class="shorts-action-btn" aria-label="Toggle Theme">
+      <span class="icon-layer dark-icon">🌙</span>
+      <span class="icon-layer light-icon">🌞</span>
+    </button>
+  </nav>
+
+  <div class="container">
+
+    <div class="form-card">
+      <h2>Enter Startup Details</h2>
+
+      <div class="input-group">
+        <input type="text" id="name" required placeholder=" ">
+        <label>Startup Name</label>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <input type="number" id="funding" required placeholder=" ">
+          <label>Funding Raised ($M)</label>
+        </div>
+        <div class="input-group">
+          <input type="number" id="burn" required placeholder=" ">
+          <label>Monthly Burn Rate ($M)</label>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <input type="number" id="employees" required placeholder=" ">
+          <label>Employees</label>
+        </div>
+        <div class="input-group">
+          <input type="number" id="sleep" required placeholder=" ">
+          <label>Founder Sleep (hrs/day)</label>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <input type="number" id="coffee" required placeholder=" ">
+          <label>Coffee Cups/Day</label>
+        </div>
+        <div class="input-group">
+          <input type="number" id="aiBuzz" required placeholder=" ">
+          <label>AI Buzzwords in Pitch</label>
+        </div>
+      </div>
+
+      <div class="range-group">
+        <div class="range-label-container">
+          <label>Investor Confidence</label>
+          <span id="confidenceValue">50%</span>
+        </div>
+        <input type="range" id="confidence" min="0" max="100" value="50">
+      </div>
+
+      <button class="action-btn" onclick="generateReport()">Analyze Runway ⚡</button>
+    </div>
+
+    <div class="report-card" id="report">
+      <h2>📊 Survival Report</h2>
+      <div class="empty-state">
+        <p>Awaiting your telemetry... input data and smash the analyze button to check your fate.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
